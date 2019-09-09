@@ -14,23 +14,20 @@
 ActiveRecord::Schema.define(version: 20190909192438) do
 
   create_table "books", force: :cascade do |t|
-    t.string  "title"
-    t.string  "author"
-    t.string  "genre"
-    t.integer "teacher_id"
+    t.string "title"
+    t.string "author"
+    t.string "genre"
   end
 
   create_table "reviews", force: :cascade do |t|
     t.integer "rating"
     t.text    "review"
-    t.integer "student_id"
-    t.integer "book_id"
   end
 
   create_table "students", force: :cascade do |t|
     t.string "name"
     t.string "username"
-    t.string "password"
+    t.string "password_digest"
   end
 
   create_table "teachers", force: :cascade do |t|
