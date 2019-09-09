@@ -11,23 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190909192438) do
+ActiveRecord::Schema.define(version: 20190909203908) do
 
   create_table "books", force: :cascade do |t|
-    t.string "title"
-    t.string "author"
-    t.string "genre"
+    t.string  "title"
+    t.string  "author"
+    t.string  "genre"
+    t.integer "teacher_id"
   end
 
   create_table "reviews", force: :cascade do |t|
     t.integer "rating"
     t.text    "review"
+    t.integer "book_id"
+    t.integer "student_id"
   end
 
   create_table "students", force: :cascade do |t|
-    t.string "name"
-    t.string "username"
-    t.string "password_digest"
+    t.string  "name"
+    t.string  "username"
+    t.string  "password_digest"
+    t.integer "teacher_id"
   end
 
   create_table "teachers", force: :cascade do |t|

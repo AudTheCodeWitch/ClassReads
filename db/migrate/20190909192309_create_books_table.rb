@@ -4,7 +4,6 @@ class CreateBooksTable < ActiveRecord::Migration
       t.string :title
       t.string :author
       t.string :genre
-      t.integer :teacher_id
     end
   end
 end
