@@ -13,6 +13,14 @@ class ApplicationController < Sinatra::Base
     erb :welcome
   end
 
+  get '/login' do
+    erb :login
+  end
+
+  get '/register' do
+    erb :register
+  end
+
   helpers do
     def logged_in?
       !!session[:user_id]
