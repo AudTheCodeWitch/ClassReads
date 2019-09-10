@@ -27,11 +27,11 @@ class ApplicationController < Sinatra::Base
     elsif params[:role] == "teacher"
       @user = Teacher.create(name: params[:name], username:params[:username], password: params[:password])
       session[:user_id] = @user.id
-      redirect '/students'
+      redirect '/teachers/:username'
     elsif params[:role] == 'student'
       @user = Student.create(name: params[:name], username:params[:username], password: params[:password])
       session[:user_id] = @user.id
-      redirect '/reviews'
+      redirect '/students/:username'
 
     end
   end
