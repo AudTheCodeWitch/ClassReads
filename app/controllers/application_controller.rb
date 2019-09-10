@@ -17,11 +17,33 @@ class ApplicationController < Sinatra::Base
     erb :login
   end
 
+  post '/login' do
+    if params[:role] == 'teacher'
+      user = Teacher.find_by(username: params[:username])
+      if user && user.authenticate(params[:password])
+        session[:user_id] = user.id
+        redirect '/teachers/:username'
+      else
+        redirect '/register'
+      end
+    else
+      user = Student.find_by(username: params[:username])
+      if user && user.authenticate(params[:password])
+        session[:user_id] = user.id
+        redirect '/students/:username'
+      else
+        redirect '/register'
+      end
+    end
+  end
+
+
+
   get '/register' do
     erb :register
   end
 
-  post '/login' do
+  post '/register' do
     if params[:username] == "" || params[:name] == "" || params[:password] == ""
       redirect '/register'
     elsif params[:role] == "teacher"
