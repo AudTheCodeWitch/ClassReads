@@ -23,14 +23,17 @@ class ApplicationController < Sinatra::Base
       if @teacher && @teacher.authenticate(params[:password])
         session[:user_id] = @teacher.id
         redirect "/teachers/#{params[:username]}"
+
       else
         redirect '/register'
       end
+
     else
       @student = Student.find_by(username: params[:username])
       if @student && @student.authenticate(params[:password])
         session[:user_id] = @student.id
         redirect "/students/#{params[:username]}"
+
       else
         redirect '/register'
       end
@@ -46,12 +49,16 @@ class ApplicationController < Sinatra::Base
   post '/register' do
     if params[:username] == '' || params[:name] == '' || params[:password] == ''
       redirect '/register'
+
     elsif params[:role] == 'teacher'
       @teacher = Teacher.create(name: params[:name], username: params[:username], password: params[:password])
       session[:user_id] = @teacher.id
       redirect "/teachers/#{params[:username]}"
+
     elsif params[:role] == 'student'
       @student = Student.create(name: params[:name], username: params[:username], password: params[:password])
+      @student.teacher = Teacher.find_by_name(params[:my_teacher])
+      @student.save
       session[:user_id] = @student.id
       redirect "/students/#{params[:username]}"
 
