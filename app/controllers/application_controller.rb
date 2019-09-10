@@ -47,13 +47,13 @@ class ApplicationController < Sinatra::Base
     if params[:username] == "" || params[:name] == "" || params[:password] == ""
       redirect '/register'
     elsif params[:role] == "teacher"
-      @user = Teacher.create(name: params[:name], username:params[:username], password: params[:password])
+      @user = Teacher.create(name: params[:name], username: params[:username], password: params[:password])
       session[:user_id] = @user.id
-      redirect '/teachers/:username'
+      redirect "/teachers/#{params[:username]}"
     elsif params[:role] == 'student'
-      @user = Student.create(name: params[:name], username:params[:username], password: params[:password])
+      @user = Student.create(name: params[:name], username: params[:username], password: params[:password])
       session[:user_id] = @user.id
-      redirect '/students/:username'
+      redirect "/students/#{params[:username]}"
 
     end
   end
