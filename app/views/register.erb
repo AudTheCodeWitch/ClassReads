@@ -1,12 +1,17 @@
 <h1>Join ClassReads</h1>
 <br>
 <form action="/register" method="post">
-  <input type="radio" name="role" value="student" checked> I am a STUDENT.<br>
-  <input type="radio" name="role" value="teacher" checked> I am a TEACHER.<br>
-  <br>
+  <p><label for="role">I am a:</label><br>
+  <input type="radio" name="role" value="student" checked> STUDENT.<br>
+  <input type="radio" name="role" value="teacher"> TEACHER.</p>
+
+  <p>My teacher is: <br>
+    <% Teacher.all.each do |teacher| %>
+    <input type="radio" id="my_teacher" name="my_teacher" value="<%=teacher.name%>"> <%="#{teacher.name}" %><br>
+    <% end %></p>
+
   <p><label for="name">Name: </label><input type="text" id="name" name="name"></p>
   <p><label for="username">Username: </label><input type="text" id="username" name="username"></p>
-<!--  <p><label for="email">Email: </label><input type="text" id="email" name="email"></p>-->
   <p><label for="password">Password: </label><input type="text" id="password" name="password"></p>
   <input type="submit" value="Let's Go!">
 </form>
