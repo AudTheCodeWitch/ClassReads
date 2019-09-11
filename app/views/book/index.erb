@@ -1,1 +1,11 @@
-List of all books
+<h1>Welcome to <%=@teacher.name %>'s Library</h1>
+
+<ul>
+  <% @books.each do |b| %>
+    <%book = b.slug %>
+    <li><a href="/books/<%=book %>"><%= b.title %></a> - <%= b.author %></li>
+  <% end %>
+</ul><br>
+<% if current_user.username == @teacher.username %>
+  <a href="/books/new"><button type="button">Add Book</button> </a>
+<% end %>
