@@ -1,5 +1,18 @@
 class BooksController < ApplicationController
   get '/books' do
+    if logged_in?
+      if session[:role] == "teacher"
+        @teacher = Teacher.find_by(username: current_user.username)
+      else
+        @student = Student.find_by(username: current_user.username)
+        @teacher = @student.teacher
+      end
+      @books = @teacher.books.all.sort_by { |b| b.author}
+
+      erb :'book/index'
+    else
+      redirect '/login'
+    end
     erb :'book/index'
   end
 
