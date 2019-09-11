@@ -1,2 +1,8 @@
-Main classroom page... list all students<br>
-link to student show pages
+<h1>Welcome to <%=@teacher.name %>'s Classroom</h1>
+
+<p>Students:</p>
+<ul>
+  <% @students.each do |student| %>
+    <li><a href="/students/<%=student.username %>"><%= student.name %></a></li>
+  <% end %>
+</ul>
