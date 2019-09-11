@@ -19,6 +19,13 @@ class StudentsController < ApplicationController
   end
 
   get '/students/:username/edit' do
+    @student = Student.find_by(username: params[:username])
+    if current_user.username == params[:username] || current_user.username == @student.teacher.username
+      @teacher = @student.teacher
+      erb :'student/edit'
+    else
+      redirect '/students/:username'
+    end
     erb :'student/edit'
   end
 
