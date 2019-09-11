@@ -5,5 +5,8 @@
   <% @students.each do |student| %>
     <li><a href="/students/<%=student.username %>"><%= student.name %></a></li>
   <% end %>
-</ul>
+</ul><br>
+<% if current_user.username == @teacher.username %>
+  <a href="/students/new"><button type="button">Create Student</button> </a>
+<% end %>
 <p>Explore <%=@teacher.name %>'s bookshelf.</p>
