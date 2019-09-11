@@ -4,7 +4,8 @@
 <p>View <%=@teacher.name %>'s classroom.</p>
 <p>View <%=@teacher.name %>'s classroom.</p>
 <% if @teacher.username == current_user.username %>
-  <h2>Edit your profile:</h2>
+  <a href="/teachers/<%= @teacher.username %>/edit"><button type="button">Edit My Profile</button></a>
+  <a href="/teachers/<%= @teacher.username %>/delete"><button type="button">Delete My Account</button></a>
 <% end %>
 
 
