@@ -11,6 +11,7 @@ class StudentsController < ApplicationController
   get '/students/:username' do
     if logged_in?
       @student = Student.find_by(username: params[:username])
+      @teacher = @student.teacher
       erb :'student/show'
     else
       redirect '/login'
