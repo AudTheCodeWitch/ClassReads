@@ -16,7 +16,18 @@ class StudentsController < ApplicationController
   end
 
   get '/students/new' do
-    erb :'student/new'
+    if session[:role] == "teacher"
+      erb :'student/new'
+    else
+      redirect '/students'
+    end
+  end
+
+  post '/students' do
+    @student = Student.create(name: params[:name], username: params[:username], password: params[:password])
+    @student.teacher = Teacher.find_by(username: current_user.username)
+    @student.save
+    redirect '/students'
   end
 
   get '/students/:username' do
@@ -53,6 +64,7 @@ class StudentsController < ApplicationController
       if params[:password] != ''
         @student.update(password: params[:password])
       end
+      @student.save
       redirect "/students/#{@student.username}"
 
     end
@@ -63,7 +75,6 @@ class StudentsController < ApplicationController
     @student = Student.find_by(username: params[:username])
     if current_user.username == @student.teacher.username
       Student.destroy(@student.id)
-      session.destroy
       redirect '/students'
     else
       redirect '/students/:username'
