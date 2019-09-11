@@ -80,5 +80,22 @@ class BooksController < ApplicationController
     redirect "/books/#{@book.slug}"
   end
 
+  get '/books/:slug/reviews/:id/edit' do
+    @book = Book.find_by_slug(params[:slug])
+    @review = @book.reviews.find_by_id(params[:id])
+    if current_user.username == @review.student.username || session[:role] == 'teacher'
+      erb :'book/review/edit'
+    else
+      redirect "/books/#{@book.slug}"
+    end
+  end
+
+  patch '/books/:slug/reviews/:id' do
+    @book = Book.find_by_slug(params[:slug])
+    @review = @book.reviews.find_by_id(params[:id])
+    @review.update(params[:review])
+    redirect "/books/#{@book.slug}"
+  end
+
 end
 
