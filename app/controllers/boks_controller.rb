@@ -62,5 +62,23 @@ class BooksController < ApplicationController
     redirect '/books'
   end
 
+  get '/books/:slug/reviews/new' do
+    @book = Book.find_by_slug(params[:slug])
+    if session[:role] == "student"
+      erb :'book/review/new'
+    else
+      redirect "/books/#{@book.slug}"
+    end
+  end
+
+  post '/books/:slug/reviews' do
+    @book = Book.find_by_slug(params[:slug])
+    @review = Review.create(rating: params[:review][:rating], review: params[:review][:review])
+    @review.student = Student.find_by(username: current_user.username)
+    @review.book = Book.find_by_slug(params[:slug])
+    @review.save
+    redirect "/books/#{@book.slug}"
+  end
+
 end
 
