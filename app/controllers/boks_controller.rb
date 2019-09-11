@@ -24,6 +24,13 @@ class BooksController < ApplicationController
     end
   end
 
+  post '/books' do
+    @book = Book.create(title: params[:title], author: params[:author], genre: params[:genre])
+    @book.teacher = Teacher.find_by(username: current_user.username)
+    @book.save
+    redirect '/books'
+  end
+
   get '/books/:slug' do
     if logged_in?
       @book = Book.find_by(title: params[:title])
@@ -34,6 +41,7 @@ class BooksController < ApplicationController
   end
 
   get '/books/:slug/edit' do
+
     erb :'book/edit'
   end
 
