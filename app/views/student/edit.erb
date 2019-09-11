@@ -1,1 +1,24 @@
-Teacher and student can access this
+<!--Teacher and student can access this-->
+<h1>Edit teacher profile</h1>
+<form action="/students/<%= @student.username %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <label for="name">Name:</label>
+  <input id="name" type="text" name="name" value="<%= @student.name %>"><br>
+  <label for="username">Username:</label>
+  <input id="username" type="text" name="username" value="<%= @student.username %>"><br>
+  <label for="password">Password:</label>
+  <input id="name" type="password" name="password"><br>
+  <% if @teacher.username == current_user.username %>
+    <label for="teacher">Teacher:</label><br>
+    <% Teacher.all.each do |teacher| %>
+      <% if @student.teacher == teacher %>
+      <input type="radio" id="teacher" name="teacher" value="<%=teacher.name%>" checked> <%="#{teacher.name}" %><br>
+        <%else %>
+        <input type="radio" id="teacher" name="teacher" value="<%=teacher.name%>"> <%="#{teacher.name}" %><br>
+      <% end %>
+    <% end %>
+
+  <% end %>
+
+  <input type="submit" />
+</form>
