@@ -22,6 +22,7 @@ class ApplicationController < Sinatra::Base
       @teacher = Teacher.find_by(username: params[:username])
       if @teacher && @teacher.authenticate(params[:password])
         session[:user_id] = @teacher.id
+        session[:role] = params[:role]
         redirect "/teachers/#{params[:username]}"
 
       else
@@ -32,6 +33,7 @@ class ApplicationController < Sinatra::Base
       @student = Student.find_by(username: params[:username])
       if @student && @student.authenticate(params[:password])
         session[:user_id] = @student.id
+        session[:role] = params[:role]
         redirect "/students/#{params[:username]}"
 
       else
@@ -53,6 +55,7 @@ class ApplicationController < Sinatra::Base
     elsif params[:role] == 'teacher'
       @teacher = Teacher.create(name: params[:name], username: params[:username], password: params[:password])
       session[:user_id] = @teacher.id
+      session[:role] = params[:role]
       redirect "/teachers/#{params[:username]}"
 
     elsif params[:role] == 'student'
@@ -60,6 +63,7 @@ class ApplicationController < Sinatra::Base
       @student.teacher = Teacher.find_by_name(params[:my_teacher])
       @student.save
       session[:user_id] = @student.id
+      session[:role] = params[:role]
       redirect "/students/#{params[:username]}"
 
     end
@@ -69,10 +73,14 @@ class ApplicationController < Sinatra::Base
     def logged_in?
       !!session[:user_id]
     end
-    #
-    # def current_user
-    #   User.find(session[:user_id])
-    # end
+
+    def current_user
+      if session[:role] == 'teacher'
+        Teacher.find(session[:user_id])
+      elsif session[:role] == 'student'
+        Student.find(session[:user_id])
+      end
+    end
   end
 
 end
