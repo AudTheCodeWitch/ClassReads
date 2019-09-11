@@ -7,7 +7,7 @@
   <label for="username">Username:</label>
   <input id="username" type="text" name="username" value="<%= @student.username %>"><br>
   <label for="password">Password:</label>
-  <input id="name" type="password" name="password"><br>
+  <input id="password" type="password" name="password"><br>
   <% if @teacher.username == current_user.username %>
     <label for="teacher">Teacher:</label><br>
     <% Teacher.all.each do |teacher| %>
