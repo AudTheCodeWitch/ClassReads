@@ -33,7 +33,7 @@ class BooksController < ApplicationController
 
   get '/books/:slug' do
     if logged_in?
-      @book = Book.find_by(title: params[:title])
+      @book = Book.find_by_slug(params[:slug])
       erb :'book/show'
     else
       redirect '/login'
@@ -55,7 +55,7 @@ class BooksController < ApplicationController
   end
 
   delete '/books/:slug' do
-    @book = Book.find_by(title: params[:title])
+    @book = Book.find_by_slug(params[:slug])
     @book.delete
     redirect '/books'
   end
