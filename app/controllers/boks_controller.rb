@@ -51,7 +51,9 @@ class BooksController < ApplicationController
   end
 
   patch '/books/:slug' do
-    redirect '/books/:slug'
+    @book = Book.find_by_slug(params[:slug])
+    @book.update(params[:book])
+    redirect "/books/#{@book.slug}"
   end
 
   delete '/books/:slug' do
