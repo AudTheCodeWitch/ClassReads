@@ -1,7 +1,18 @@
 class StudentsController < ApplicationController
   get '/students' do
-    @students = Student.all
-    erb :'student/index'
+    if logged_in?
+      if session[:role] == "teacher"
+        @teacher = Teacher.find_by(username: current_user.username)
+      else
+        @student = Student.find_by(username: current_user.username)
+        @teacher = @student.teacher
+      end
+      @students = @teacher.students.all.sort_by { |s| s.name}
+
+      erb :'student/index'
+    else
+      redirect '/login'
+    end
   end
 
   get '/students/new' do
@@ -24,7 +35,7 @@ class StudentsController < ApplicationController
       @teacher = @student.teacher
       erb :'student/edit'
     else
-      redirect '/students/:username'
+      redirect "/students/#{@student.username}"
     end
     erb :'student/edit'
   end
@@ -42,7 +53,7 @@ class StudentsController < ApplicationController
       if params[:password] != ''
         @student.update(password: params[:password])
       end
-      redirect "/students/#{student.username}"
+      redirect "/students/#{@student.username}"
 
     end
     redirect '/students/:username'
@@ -50,8 +61,13 @@ class StudentsController < ApplicationController
 
   delete '/students/:username' do
     @student = Student.find_by(username: params[:username])
-    @stuent.delete
-    redirect '/students'
+    if current_user.username == @student.teacher.username
+      Student.destroy(@student.id)
+      session.destroy
+      redirect '/students'
+    else
+      redirect '/students/:username'
+    end
   end
 
 end
