@@ -1,5 +1,5 @@
 <!--Teacher and student can access this-->
-<h1>Edit teacher profile</h1>
+<h1>Edit student profile</h1>
 <form action="/students/<%= @student.username %>" method="post">
   <input type="hidden" name="_method" value="patch">
   <label for="name">Name:</label>
@@ -18,7 +18,14 @@
       <% end %>
     <% end %>
 
+
   <% end %>
 
   <input type="submit" />
 </form>
+<% if @teacher.username == current_user.username %>
+  <form action="/students/<%= @student.username %>" method="post">
+    <input type="hidden" name="_method" value="delete" />
+    <input type="submit" value="Delete Student">
+  </form>
+<% end %>
