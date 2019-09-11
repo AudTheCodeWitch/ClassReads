@@ -13,7 +13,7 @@
     <li><p><%= r.student.name %> gives this book <%= r.rating %> stars!</p>
       <p><%= r.student.name %>'s Review: <%= r.review %></p>
       <% if current_user.username == r.student.username || session[:role] == 'teacher' %>
-        <button type="button">Edit Review</button>
+        <a href="/books/<%= @book.slug %>/reviews/<%=r.id %>/edit"><button type="button">Edit Review</button></a>
         <button type="button">Delete Review</button>
       <% end %>
     </li><hr><br>
