@@ -1,3 +1,14 @@
-CRUD student profile
-View classroom link
-View bookshelf link
+<!--CRUD Student profile-->
+<h1>Student: <%= @student.name %></h1>
+<p>Teacher: <%= @teacher.name %></p><br>
+<!--List Reviews-->
+<p>View <%=@teacher.name %>'s classroom.</p>
+<p>View <%=@teacher.name %>'s classroom.</p>
+<% if @student.username == current_user.username %>
+  <a href="/students/<%= @student.username %>/edit"><button type="button">Edit Student Profile</button></a>
+<% end %>
+<% if @teacher.username == current_user.username %>
+  <a href="/students/<%= @student.username %>/edit"><button type="button">Edit Student Profile</button></a>
+  <a href="/students/<%= @student.username %>/delete"><button type="button">Delete Student Account</button></a>
+<% end %>
+
