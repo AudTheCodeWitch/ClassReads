@@ -11,12 +11,17 @@
   <ul>
   <% @book.reviews.each do |r| %>
     <li><p><%= r.student.name %> gives this book <%= r.rating %> stars!</p>
-      <p><%= r.student.name %>'s Review: <%= r.review %></p></li><hr><br>
+      <p><%= r.student.name %>'s Review: <%= r.review %></p>
+      <% if current_user.username == r.student.username || session[:role] == 'teacher' %>
+        <button type="button">Edit Review</button>
+        <button type="button">Delete Review</button>
+      <% end %>
+    </li><hr><br>
   <% end %>
   </ul>
 <% end %>
 
-<a href="/<%= @book.slug %>/review/new"><button type="button">Leave a Review</button></a>
+<a href="/books/<%= @book.slug %>/reviews/new"><button type="button">Leave a Review</button></a>
 
 
 <% if @book.teacher.username == current_user.username %>
