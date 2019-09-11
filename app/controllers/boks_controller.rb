@@ -41,8 +41,13 @@ class BooksController < ApplicationController
   end
 
   get '/books/:slug/edit' do
-
-    erb :'book/edit'
+    @book = Book.find_by_slug(params[:slug])
+    if current_user.username == @book.teacher.username
+      @teacher = @book.teacher
+      erb :'book/edit'
+    else
+      redirect "/books/#{@book.slug}"
+    end
   end
 
   patch '/books/:slug' do
