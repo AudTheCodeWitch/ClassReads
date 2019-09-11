@@ -17,7 +17,11 @@ class BooksController < ApplicationController
   end
 
   get '/books/new' do
-    erb :'book/new'
+    if session[:role] == "teacher"
+      erb :'book/new'
+    else
+      redirect '/books'
+    end
   end
 
   get '/books/:slug' do
