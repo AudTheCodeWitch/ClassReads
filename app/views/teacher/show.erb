@@ -1,5 +1,11 @@
-CRUD teacher profile
-View classroom link
-View bookshelf link
+<!--CRUD teacher profile-->
+
+<h1>Teacher: <%= @teacher.name %></h1><br>
+<p>View <%=@teacher.name %>'s classroom.</p>
+<p>View <%=@teacher.name %>'s classroom.</p>
+<% if @teacher.username == current_user.username %>
+  <h2>Edit your profile:</h2>
+<% end %>
+
 
 
