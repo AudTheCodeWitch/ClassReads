@@ -1,4 +1,4 @@
-<% if current_user.username == @student.username %>
+<% if student_user?(@student) %>
 <h1>My Profile Page</h1>
 <% else %>
   <h1><%= @student.name %></h1>
@@ -15,7 +15,7 @@ Reviews:<br>
   <% end %>
 <% end %>
 
-<% if current_user.username == @student.username || current_user.username == @teacher.username %>
+<% if users_profile?(@student, @teacher) %>
   <br>
   <hr>
   <br>

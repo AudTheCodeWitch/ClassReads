@@ -6,7 +6,7 @@
     <li><a href="/students/<%=student.username %>"><%= student.name %></a></li>
   <% end %>
 </ul><br>
-<% if current_user.username == @teacher.username %>
+<% if teacher_user?(@teacher) %>
   <a href="/students/new"><button type="button">Create Student</button> </a>
 <% end %>
 <p><a href="/books">View Class Library</a></p>

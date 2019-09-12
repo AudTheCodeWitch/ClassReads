@@ -102,7 +102,7 @@ class BooksController < ApplicationController
     @book = Book.find_by_slug(params[:slug])
     @review = @book.reviews.find_by_id(params[:id])
     @student = @review.student
-    if current_user.username == @student.username || session[:role] == 'teacher'
+    if student_user?(@student) || session[:role] == 'teacher'
       Review.destroy(@review.id)
       redirect '/books'
     else

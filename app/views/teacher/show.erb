@@ -1,4 +1,4 @@
-<% if current_user.username == @teacher.username %>
+<% if teacher_user?(@teacher) %>
   <h1>My Profile Page</h1>
 <% else %>
   <h1><%= @teacher.name %></h1>
@@ -8,7 +8,7 @@
 <p><%= @teacher.name %> has <%= @teacher.books.length %> books.</p>
 <p><%= @teacher.name %>'s students have written <%=@teacher.total_reviews %> reviews!</p>
 
-<% if @teacher.username == current_user.username %>
+<% if teacher_user?(@teacher) %>
   <br>
   <hr>
   <br>
