@@ -26,6 +26,8 @@
 <% end %>
 
 <% if @book.teacher.username == current_user.username %>
+  <a href="/books/<% @book.slug %>>/edit"><button type="button">Edit Book</button></a>
+
   <form action="/books/<%= @book.slug %>" method="post">
     <input type="hidden" name="_method" value="delete" />
     <input type="submit" value="Delete Book">
