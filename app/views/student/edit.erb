@@ -5,16 +5,16 @@
   <label for="name">Name:</label>
   <input id="name" type="text" name="name" value="<%= @student.name %>"><br>
   <label for="username">Username:</label>
-  <input id="username" type="text" name="username" value="<%= @student.username %>"><br>
+  <input id="username" type="text" name="username_" value="<%= @student.username %>"><br>
   <label for="password">Password:</label>
-  <input id="password" type="password" name="password"><br>
+  <input id="password" type="password" name="password" value="<%= @student.password %>"><br>
   <% if @teacher.username == current_user.username %>
     <label for="teacher">Teacher:</label><br>
     <% Teacher.all.each do |teacher| %>
       <% if @student.teacher == teacher %>
-      <input type="radio" id="teacher" name="teacher" value="<%=teacher.name%>" checked> <%="#{teacher.name}" %><br>
+      <input type="radio" id="teacher" name="teacher_id" value="<%=teacher.id%>" checked> <%="#{teacher.name}" %><br>
         <%else %>
-        <input type="radio" id="teacher" name="teacher" value="<%=teacher.name%>"> <%="#{teacher.name}" %><br>
+        <input type="radio" id="teacher" name="teacher_id" value="<%=teacher.id%>"> <%="#{teacher.name}" %><br>
       <% end %>
     <% end %>
 

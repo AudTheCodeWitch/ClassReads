@@ -42,8 +42,8 @@ class StudentsController < ApplicationController
 
   get '/students/:username/edit' do
     @student = Student.find_by(username: params[:username])
-    if current_user.username == params[:username] || current_user.username == @student.teacher.username
-      @teacher = @student.teacher
+    @teacher = @student.teacher
+    if current_user.username == params[:username] || current_user.username == @teacher.username
       erb :'student/edit'
     else
       redirect "/students/#{@student.username}"
@@ -53,22 +53,19 @@ class StudentsController < ApplicationController
 
   patch '/students/:username' do
     @student = Student.find_by(username: params[:username])
+    @teacher = @student.teacher
     if current_user.username == params[:username]
-      @student.update(name: params[:name], username: params[:username])
+      @student.update(name: params[:name], username: params[:username_])
       if params[:password] != ''
         @student.update(password: params[:password])
       end
-      redirect "/students/#{@student.username}"
-    elsif current_user.username == @student.teacher.username
-      @student.update(name: params[:name], username: params[:username], teacher: Teacher.find_by_name(params[:teacher]))
+    elsif current_user.username == @teacher.username
+      @student.update(name: params[:name], username: params[:username_], teacher_id: params[:teacher_id])
       if params[:password] != ''
         @student.update(password: params[:password])
       end
-      @student.save
-      redirect "/students/#{@student.username}"
-
     end
-    redirect '/students/:username'
+    redirect "/students/#{@student.username}"
   end
 
   delete '/students/:username' do
