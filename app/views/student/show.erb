@@ -16,6 +16,9 @@ Reviews:<br>
 <% end %>
 
 <% if current_user.username == @student.username || current_user.username == @teacher.username %>
+  <br>
+  <hr>
+  <br>
   <a href="/students/<%= @student.username %>/edit"><button type="button">Edit Student Profile</button></a>
 <% end %>
 
