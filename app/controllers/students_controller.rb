@@ -74,7 +74,7 @@ class StudentsController < ApplicationController
       Student.destroy(@student.id)
       redirect '/students'
     else
-      redirect '/students/:username'
+      redirect "/students/#{@student.username}"
     end
   end
 
