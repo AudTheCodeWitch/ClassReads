@@ -93,6 +93,7 @@ class BooksController < ApplicationController
   patch '/books/:slug/reviews/:id' do
     @book = Book.find_by_slug(params[:slug])
     @review = @book.reviews.find_by_id(params[:id])
+    @student = @review.student
     @review.update(params[:review])
     redirect "/books/#{@book.slug}"
   end
