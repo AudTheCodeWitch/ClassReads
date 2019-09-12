@@ -1,8 +1,13 @@
-<!--CRUD teacher profile-->
+<% if current_user.username == @teacher.username %>
+  <h1>My Profile Page</h1>
+<% else %>
+  <h1><%= @teacher.name %></h1>
+<% end %>
+<!--Maybe make this a teacher stats table-->
+<p><%= @teacher.name %> has <%= @teacher.students.length %> students.</p>
+<p><%= @teacher.name %> has <%= @teacher.books.length %> books.</p>
+<p><%= @teacher.name %>'s students have written <%=@teacher.total_reviews %> reviews!</p>
 
-<h1>Teacher: <%= @teacher.name %></h1><br>
-<p>View <%=@teacher.name %>'s classroom.</p>
-<p>View <%=@teacher.name %>'s classroom.</p>
 <% if @teacher.username == current_user.username %>
   <a href="/teachers/<%= @teacher.username %>/edit"><button type="button">Edit My Profile</button></a>
   <a href="/teachers/<%= @teacher.username %>/delete"><button type="button">Delete My Account</button></a>
