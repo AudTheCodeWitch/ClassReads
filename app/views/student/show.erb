@@ -4,7 +4,7 @@
 <!--List Reviews-->
 <p>View <%=@teacher.name %>'s classroom.</p>
 <p>View <%=@teacher.name %>'s classroom.</p>
-<% if current_user.username == @student.username || @teacher.username %>
+<% if current_user.username == @student.username || current_user.username == @teacher.username %>
   <a href="/students/<%= @student.username %>/edit"><button type="button">Edit Student Profile</button></a>
 <% end %>
 
