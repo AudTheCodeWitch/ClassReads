@@ -83,6 +83,18 @@ class ApplicationController < Sinatra::Base
       !!session[:user_id]
     end
 
+    def student_user?(student)
+      current_user.username == student.username
+    end
+
+    def teacher_user?(teacher)
+      current_user.username == teacher.username
+    end
+
+    def users_profile?(student, teacher)
+      student_user?(student) || teacher_user?(teacher)
+    end
+
     def current_user
       if session[:role] == 'teacher'
         Teacher.find(session[:user_id])
