@@ -9,6 +9,9 @@
 <p><%= @teacher.name %>'s students have written <%=@teacher.total_reviews %> reviews!</p>
 
 <% if @teacher.username == current_user.username %>
+  <br>
+  <hr>
+  <br>
   <a href="/teachers/<%= @teacher.username %>/edit"><button type="button">Edit My Profile</button></a>
   <a href="/teachers/<%= @teacher.username %>/delete"><button type="button">Delete My Account</button></a>
 <% end %>
