@@ -21,9 +21,9 @@
   <% end %>
   </ul>
 <% end %>
-
+<% if session[:role] == 'student' %>
 <a href="/books/<%= @book.slug %>/reviews/new"><button type="button">Leave a Review</button></a>
-
+<% end %>
 
 <% if @book.teacher.username == current_user.username %>
   <form action="/books/<%= @book.slug %>" method="post">
