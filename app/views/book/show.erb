@@ -1,9 +1,7 @@
 <h1><%= @book.title %></h1>
 <h2><%= @book.author %></h2>
 <h3><%= @book.genre %></h3>
-<% avg_rating = [] %>
-<% @book.reviews.each { |r| avg_rating << r.rating} %>
-<h3>Average Rating: <%= (avg_rating.sum / avg_rating.length) %></h3>
+<h3>Average Rating: <%= @book.average %></h3>
 
 <% if @book.reviews.length == 0 %>
   <p>This book has no reviews!</p>
