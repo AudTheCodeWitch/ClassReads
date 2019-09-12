@@ -20,7 +20,7 @@ class TeachersController < ApplicationController
   patch '/teachers/:username' do
     @teacher = Teacher.find_by(username: params[:username])
     if current_user.username == @teacher.username
-      @teacher.update(name: params[:name], username: params[:username])
+      @teacher.update(name: params[:name], username: params[:username_])
       if params[:password] != ''
         @teacher.update(password: params[:password])
       end
