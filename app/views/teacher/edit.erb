@@ -1,9 +1,12 @@
 <h1>Edit teacher profile</h1>
 <form action="/teachers/<%= @teacher.username %>" method="post">
   <input type="hidden" name="_method" value="patch">
-  <p><label for="name">Name: </label><input type="text" id="name" name="name" value="<%= @teacher.name %>"></p>
-  <p><label for="username">Username: </label><input type="text" id="username" name="username" value="<%= @teacher.username %>"></p>
-  <p><label for="password">Password: </label><input type="text" id="password" name="password"></p>
+  <p><label for="name">Name: </label>
+    <input type="text" id="name" name="name" value="<%= @teacher.name %>"></p>
+  <p><label for="username">Username: </label>
+    <input type="text" id="username" name="username_" value="<%= @teacher.username %>"></p>
+  <p><label for="password">Password: </label>
+    <input type="password" id="password" name="password"></p>
 
   <input type="submit" />
 </form>
