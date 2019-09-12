@@ -12,7 +12,10 @@
       <p><%= r.student.name %>'s Review: <%= r.review %></p>
       <% if current_user.username == r.student.username || session[:role] == 'teacher' %>
         <a href="/books/<%= @book.slug %>/reviews/<%=r.id %>/edit"><button type="button">Edit Review</button></a>
-        <button type="button">Delete Review</button>
+        <form action="/books/<%= @book.slug %>/reviews/<%= r.id %>" method="post">
+          <input type="hidden" name="_method" value="delete" />
+          <input type="submit" value="Delete Review">
+        </form>
       <% end %>
     </li><hr><br>
   <% end %>
