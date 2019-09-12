@@ -98,5 +98,17 @@ class BooksController < ApplicationController
     redirect "/books/#{@book.slug}"
   end
 
+  delete '/books/:slug/reviews/:id' do
+    @book = Book.find_by_slug(params[:slug])
+    @review = @book.reviews.find_by_id(params[:id])
+    @student = @review.student
+    if current_user.username == @student.username || session[:role] == 'teacher'
+      Review.destroy(@review.id)
+      redirect '/books'
+    else
+      redirect "/books/#{@book.slug}"
+    end
+  end
+
 end
 
