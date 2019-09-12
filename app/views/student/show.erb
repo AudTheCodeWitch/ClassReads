@@ -5,8 +5,16 @@
 <% end %>
 <p>Teacher: <%= @teacher.name %></p><br>
 <!--List Reviews-->
-<p>View <%=@teacher.name %>'s classroom.</p>
-<p>View <%=@teacher.name %>'s classroom.</p>
+Reviews:<br>
+<%= @student.name %> has written <%= @student.reviews.length %> reviews!<br>
+<% @student.reviews.each do |r| %>
+  <% if r.book_id %>
+    <h3><a href="/books/<%=r.book.slug %>"><%= r.book.title %></a><br></h3>
+    <h4><%= r.rating %> Stars<br></h4>
+    <p><%= r.review %></p><hr>
+  <% end %>
+<% end %>
+
 <% if current_user.username == @student.username || current_user.username == @teacher.username %>
   <a href="/students/<%= @student.username %>/edit"><button type="button">Edit Student Profile</button></a>
 <% end %>
