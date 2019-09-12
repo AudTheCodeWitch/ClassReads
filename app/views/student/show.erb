@@ -1,5 +1,8 @@
-<!--CRUD Student profile-->
-<h1>Student: <%= @student.name %></h1>
+<% if current_user.username == @student.username %>
+<h1>My Profile Page</h1>
+<% else %>
+  <h1><%= @student.name %></h1>
+<% end %>
 <p>Teacher: <%= @teacher.name %></p><br>
 <!--List Reviews-->
 <p>View <%=@teacher.name %>'s classroom.</p>
