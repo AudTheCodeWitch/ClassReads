@@ -14,7 +14,7 @@
         <a href="/books/<%= @book.slug %>/reviews/<%=r.id %>/edit"><button type="button">Edit Review</button></a>
         <form action="/books/<%= @book.slug %>/reviews/<%= r.id %>" method="post">
           <input type="hidden" name="_method" value="delete" />
-          <input type="submit" value="Delete Review">
+          <button type="submit">Delete Review</button>
         </form>
       <% end %>
     </li><hr><br>
@@ -30,6 +30,6 @@
 
   <form action="/books/<%= @book.slug %>" method="post">
     <input type="hidden" name="_method" value="delete" />
-    <input type="submit" value="Delete Book">
+    <button type="submit">Delete Book</button>
   </form>
 <% end %>
