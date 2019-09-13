@@ -6,7 +6,7 @@
 <p>Teacher: <%= @teacher.name %></p><br>
 <!--List Reviews-->
 Reviews:<br>
-<%= @student.name %> has written <%= @student.reviews.length %> reviews!<br>
+<%= @student.name %> has written <%= @student.published_reviews.length %> review(s)!<br>
 <% @student.reviews.each do |r| %>
   <% if r.book_id %>
     <h3><a href="/books/<%=r.book.slug %>"><%= r.book.title %></a><br></h3>
@@ -21,4 +21,3 @@ Reviews:<br>
   <br>
   <a href="/students/<%= @student.username %>/edit"><button type="button">Edit Student Profile</button></a>
 <% end %>
-
