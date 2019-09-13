@@ -10,8 +10,8 @@
   <% @students.each do |student| %>
     <tr>
       <td><a href="/students/<%=student.username %>"><i class="fas fa-user-graduate"></i></a> <%= student.name %></td>
-      <td><%= student.published_reviews.length %></td>
-      <td><%= student.published_reviews != [] ? student.avg_review : "--" %></td>
+      <td style="text-align: center"><%= student.published_reviews.length %></td>
+      <td style="text-align: center"><%= student.published_reviews != [] ? student.avg_review : "--" %></td>
       <td><%if student.published_reviews != [] %>
           <a href="/books/<%= student.published_reviews[-1].book.slug %>"><%= student.published_reviews[-1].book.title %></a>
           <% else %>
