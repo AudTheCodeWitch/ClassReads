@@ -1,11 +1,26 @@
 <h1><%=@teacher.name %>'s Classroom</h1>
 
-<p>Students:</p>
-<ul>
+<table class="students">
+  <tr>
+    <th>Name</th>
+    <th>Reviews</th>
+    <th>Average Rating</th>
+    <th>Latest Read</th>
+  </tr>
   <% @students.each do |student| %>
-    <li><a href="/students/<%=student.username %>"><%= student.name %></a></li>
+    <tr>
+      <td><a href="/students/<%=student.username %>"><i class="fas fa-user-graduate"></i></a> <%= student.name %></td>
+      <td><%= student.published_reviews.length %></td>
+      <td>average</td>
+      <td><%if student.published_reviews != [] %>
+          <a href="/books/<%= student.published_reviews[-1].book.slug %>"><%= student.published_reviews[-1].book.title %></a>
+          <% else %>
+          N/A
+          <%end %></td>
+    </tr>
   <% end %>
-</ul><br>
+</table>
+<br>
 <% if teacher_user?(@teacher) %>
   <a href="/students/new"><button type="button">Create Student</button> </a>
 <% end %>
