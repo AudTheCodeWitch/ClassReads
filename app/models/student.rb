@@ -9,4 +9,12 @@ class Student < ActiveRecord::Base
     self.reviews.each { |r| published << r if r.book_id != nil}
     published
   end
+
+  def avg_review
+    total = 0.0
+    self.published_reviews.each do |r|
+      total += r.rating
+    end
+    total / self.published_reviews.length
+  end
 end
