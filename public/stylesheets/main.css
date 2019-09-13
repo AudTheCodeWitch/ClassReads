@@ -158,6 +158,37 @@
 
   }
 
+  /* The grid container */
+  .grid-container {
+    display: grid;
+    grid-template-areas:
+        'left right';
+    margin: auto
+  }
+
+  .left {
+    padding: 10px;
+    background-color: #ff7f00;
+    color: white;
+  }
+
+  /* Style the left column */
+  .left {
+    grid-area: left;
+  }
+
+  /* Style the right column */
+  .right {
+    grid-area: right;
+  }
+
+  .grid-container img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 85%;
+  }
+
 
 }
 
