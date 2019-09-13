@@ -8,11 +8,9 @@
 Reviews:<br>
 <%= @student.name %> has written <%= @student.published_reviews.length %> review(s)!<br>
 <% @student.published_reviews.each do |r| %>
-  <% if r.book_id %>
     <h3><a href="/books/<%=r.book.slug %>"><%= r.book.title %></a><br></h3>
     <h4><%= r.rating %> Stars<br></h4>
     <p><%= r.review %></p><hr>
-  <% end %>
 <% end %>
 
 <% if users_profile?(@student, @teacher) %>
