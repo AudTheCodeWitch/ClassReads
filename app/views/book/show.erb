@@ -23,15 +23,17 @@
   <% end %>
   </ul>
 <% end %>
+<ul class="edit-book">
 <% if session[:role] == 'student' %>
-<a href="/books/<%= @book.slug %>/reviews/new"><button type="button">Leave a Review</button></a>
+<li><a href="/books/<%= @book.slug %>/reviews/new"><button type="button">Leave a Review</button></a></li>
 <% end %>
 
 <% if @book.teacher.username == current_user.username %>
-  <a href="/books/<% @book.slug %>>/edit"><button type="button">Edit Book</button></a>
+  <li><a href="/books/<% @book.slug %>>/edit"><button type="button">Edit Book</button></a></li>
 
   <form action="/books/<%= @book.slug %>" method="post">
     <input type="hidden" name="_method" value="delete" />
-    <button type="submit">Delete Book</button>
+    <li><button type="submit">Delete Book</button></li>
   </form>
 <% end %>
+</ul>

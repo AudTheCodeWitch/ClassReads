@@ -53,11 +53,6 @@
     text-decoration: none;
   }
 
-  .edit li {
-    float: left;
-    padding: 2px;
-  }
-
   nav .btn {
     background-color: #ffd700;
     border: none; /* Remove borders */
@@ -103,7 +98,7 @@
   }
 
   h3 {
-    font-size: 18px;
+    font-size: 20px;
     line-height: 36px;
     color: #800080;
   }
@@ -139,9 +134,27 @@
   }
 
   footer.branding {
-    border-top: 2px solid #ccc;
+    border-top: 2px solid #350071;
     margin-top: 20px;
     padding-top: 20px;
+  }
+
+  .edit li {
+    float: left;
+    padding: 2px;
+  }
+
+  .edit-book li {
+    float: right;
+    padding: 2px;
+    margin-bottom: 8px;
+  }
+
+  hr {
+    margin: 8px auto;
+    border-top: 1px solid #350071;
+    border-bottom: 1px solid #350071;
+
   }
 
 
@@ -176,4 +189,5 @@
     font-size: 18px;
     line-height: 24px;
   }
+
 }
