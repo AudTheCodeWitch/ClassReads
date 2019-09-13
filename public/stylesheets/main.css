@@ -53,6 +53,11 @@
     text-decoration: none;
   }
 
+  .edit li {
+    float: left;
+    padding: 2px;
+  }
+
   nav .btn {
     background-color: #ffd700;
     border: none; /* Remove borders */

@@ -6,18 +6,20 @@
 <% if @book.reviews.length == 0 %>
   <p>This book has no reviews!</p>
   <% else %>
-  <ul>
+  <ul class="review">
   <% @book.reviews.each do |r| %>
-    <li><p><%= r.student.name %> gives this book <%= r.rating %> stars!</p>
-      <p><%= r.student.name %>'s Review: <%= r.review %></p>
+    <li><h4><%= r.student.name %> gives this book <%= r.rating %> stars!</h4>
+      <p><%= r.review %></p>
       <% if current_user.username == r.student.username || session[:role] == 'teacher' %>
-        <a href="/books/<%= @book.slug %>/reviews/<%=r.id %>/edit"><button type="button">Edit Review</button></a>
-        <form action="/books/<%= @book.slug %>/reviews/<%= r.id %>" method="post">
-          <input type="hidden" name="_method" value="delete" />
-          <button type="submit">Delete Review</button>
-        </form>
+        <ul class="edit">
+          <li><a href="/books/<%= @book.slug %>/reviews/<%=r.id %>/edit"><button type="button">Edit Review</button></a></li>
+          <li><form action="/books/<%= @book.slug %>/reviews/<%= r.id %>" method="post">
+            <input type="hidden" name="_method" value="delete" />
+            <button type="submit">Delete Review</button>
+          </form></li>
+        </ul><br><br>
       <% end %>
-    </li><hr><br>
+    </li><hr>
   <% end %>
   </ul>
 <% end %>
