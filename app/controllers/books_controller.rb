@@ -58,6 +58,8 @@ class BooksController < ApplicationController
 
   delete '/books/:slug' do
     @book = Book.find_by_slug(params[:slug])
+    @book.reviews = []
+    @book.save
     @book.delete
     redirect '/books'
   end
