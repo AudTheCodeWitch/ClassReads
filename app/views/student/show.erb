@@ -7,7 +7,7 @@
 <!--List Reviews-->
 Reviews:<br>
 <%= @student.name %> has written <%= @student.published_reviews.length %> review(s)!<br>
-<% @student.reviews.each do |r| %>
+<% @student.published_reviews.each do |r| %>
   <% if r.book_id %>
     <h3><a href="/books/<%=r.book.slug %>"><%= r.book.title %></a><br></h3>
     <h4><%= r.rating %> Stars<br></h4>
@@ -16,8 +16,5 @@ Reviews:<br>
 <% end %>
 
 <% if users_profile?(@student, @teacher) %>
-  <br>
-  <hr>
-  <br>
   <a href="/students/<%= @student.username %>/edit"><button type="button">Edit Student Profile</button></a>
 <% end %>
