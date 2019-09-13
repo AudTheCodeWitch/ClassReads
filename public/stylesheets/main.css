@@ -15,7 +15,7 @@
   body {
     background-color: #20b2ad;
     color: #333;
-    font-family: Sans-Serif;
+    font-family: Verdana, Arial, Helvetica;
     line-height: 18px;
   }
 
@@ -59,6 +59,7 @@
     color: white; /* White text */
     padding: 12px 16px; /* Some padding */
     font-size: 16px; /* Set a font size */
+    font-family: "Comic Sans MS", sans-serif;
     cursor: pointer; /* Mouse pointer on hover */
   }
 
@@ -67,22 +68,41 @@
     background-color: #ff7f00;
   }
 
+  button {
+    background-color: #ff7f00;
+    border: none; /* Remove borders */
+    color: white; /* White text */
+    padding: 3px; /* Some padding */
+    font-size: 14px; /* Set a font size */
+    font-family: "Comic Sans MS", sans-serif;
+    cursor: pointer; /* Mouse pointer on hover */
+  }
+
+  button:hover {
+    background-color: #ffd700;
+  }
+
   h1 {
     font-size: 36px;
     line-height: 54px;
+    color: #350071;
   }
 
   h2 {
-    border-bottom: 2px solid #ccc;
     font-size: 24px;
     line-height: 36px;
     margin-bottom: 16px;
+    color: #5b0078;
+    border-top: 2px dotted #5b0078;
+    border-bottom: 2px dotted #5b0078;
   }
 
   h3 {
     font-size: 18px;
     line-height: 36px;
+    color: #800080;
   }
+
 
   p {
     margin-bottom: 18px;
