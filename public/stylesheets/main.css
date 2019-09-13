@@ -13,7 +13,7 @@
 
   /* --- Welcome Page Styles --- */
   body {
-    background-color: lightblue;
+    background-color: #20b2ad;
     color: #333;
     font-family: Sans-Serif;
     line-height: 18px;
@@ -28,6 +28,45 @@
     max-width: 960px;
     padding: 2.25%; /* 18px / 800px */
     width: 85%;
+  }
+
+  nav {
+    margin: 16px auto;
+    max-width: 960px;
+    width: 97%;
+    position: sticky;
+    top: 0;
+  }
+
+  nav ul {
+    list-style-type: none;
+    margin: auto -16px;
+    padding: 0;
+    overflow: hidden;
+    top: 0;
+    background-color: #ffd700
+  }
+
+  nav li {
+    float: left;
+    display: block;
+    color: #000066;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  nav .btn {
+    background-color: #ffd700;
+    border: none; /* Remove borders */
+    color: white; /* White text */
+    padding: 12px 16px; /* Some padding */
+    font-size: 16px; /* Set a font size */
+    cursor: pointer; /* Mouse pointer on hover */
+  }
+
+  /* Darker background on mouse-over */
+  nav .btn:hover {
+    background-color: #ff7f00;
   }
 
   h1 {
@@ -81,6 +120,8 @@
     margin-top: 20px;
     padding-top: 20px;
   }
+
+
 }
 
 @media screen and (max-width: 600px) {
