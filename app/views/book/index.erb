@@ -1,11 +1,23 @@
-<h1>Welcome to <%=@teacher.name %>'s Library</h1>
+<h1><%=@teacher.name %>'s Library</h1>
 
-<ul>
-  <% @books.each do |b| %>
-    <%book = b.slug %>
-    <li><a href="/books/<%=book %>"><%= b.title %></a> - <%= b.author %></li>
+<table class="books">
+  <tr>
+    <th>Average Rating</th>
+    <th>Title</th>
+    <th>Author</th>
+    <th>Genre</th>
+  </tr>
+  <% @books.each do |book| %>
+    <tr>
+      <td> <%= book.average %></td>
+      <td><a href="/books/<%= book.slug %>"><%= book.title %></a></td>
+      <td><%= book.author %></td>
+      <td><%= book.genre %></td>
+    </tr>
   <% end %>
-</ul><br>
+</table>
+
+<br>
 <% if current_user.username == @teacher.username %>
   <a href="/books/new"><button type="button">Add Book</button> </a>
 <% end %>

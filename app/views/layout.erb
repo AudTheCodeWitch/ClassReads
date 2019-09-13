@@ -20,7 +20,7 @@
         <ul>
           <% if logged_in? %>
             <% if session[:role] == 'teacher' %>
-              <li style="float:right"><a href="/teachers/<%=current_user.username %>"><button class="btn">Welcome, <%= current_user.name %>!</button></a></li>
+              <li style="float:right"><a href="/teachers/<%=current_user.username %>"><button class="btn"><i class="fas fa-user-graduate"></i> Welcome, <%= current_user.name %>!</button></a></li>
             <% else %>
               <li style="float:right"><a href="/students/<%=current_user.username %>"><button class="btn">Welcome, <%= current_user.name %>!</button></a></li>
             <% end %>
