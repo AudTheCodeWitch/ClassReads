@@ -1,6 +1,6 @@
 Teacher.all.each do |t|
   # create book library
-  100.times do
+  50.times do
     b = Faker::Book
     Book.create(title: b.title, author: b.author, genre: b.genre, teacher_id: t.id)
   end
@@ -21,7 +21,8 @@ Student.all.each do |s|
   5.times do
     rating = Faker::Number.within(range: 1..5)
     review = Faker::Movies::HarryPotter.quote
-    book = Book.all[rand(Book.all.length)]
+    t = Teacher.find_by(id: s.teacher_id)
+    book = t.books[rand(t.books.length)]
     Review.create(rating: rating, review: review, student_id: s.id, book_id: book.id)
   end
 end
