@@ -1,7 +1,7 @@
 <h1><%= @book.title %></h1>
-<h2><%= @book.author %></h2>
-<h3><%= @book.genre %></h3>
-<h3>Average Rating: <%= @book.average %></h3>
+<h2>By <%= @book.author %></h2>
+<h3>Genre: <%= @book.genre %></h3>
+<h3>Average Rating: <%= @book.average %> stars</h3><br>
 
 <% if @book.reviews.length == 0 %>
   <p>This book has no reviews!</p>
