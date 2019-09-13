@@ -4,9 +4,20 @@
   <h1><%= @teacher.name %></h1>
 <% end %>
 <!--Maybe make this a teacher stats table-->
-<p><%= @teacher.name %> has <%= @teacher.students.length %> students.</p>
-<p><%= @teacher.name %> has <%= @teacher.books.length %> books.</p>
-<p><%= @teacher.name %>'s students have written <%=@teacher.total_reviews %> reviews!</p>
+<table class="teacher-stats">
+  <tr>
+    <td style="width: 25%">Student Count:</td>
+    <td><%= @teacher.students.length %></td>
+  </tr>
+  <tr>
+    <td>Book Count:</td>
+    <td><%= @teacher.books.length %></td>
+  </tr>
+  <tr>
+    <td>Review Count:</td>
+    <td><%=@teacher.total_reviews %></td>
+  </tr>
+</table>
 
 <% if teacher_user?(@teacher) %>
   <br>
