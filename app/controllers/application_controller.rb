@@ -102,6 +102,15 @@ class ApplicationController < Sinatra::Base
         Student.find(session[:user_id])
       end
     end
+
+    def assign_teacher(current_user)
+      if teacher_user?(current_user)
+        @teacher = current_user
+      else
+        @student = current_user
+        @teacher = @student.teacher
+      end
+    end
   end
 
 end
