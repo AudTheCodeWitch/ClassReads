@@ -2,14 +2,14 @@
 <h1>Edit student profile</h1>
 <form action="/students/<%= @student.username %>" method="post">
   <input type="hidden" name="_method" value="patch">
-  <label for="name">Name:</label>
-  <input id="name" type="text" name="name" value="<%= @student.name %>"><br>
-  <label for="username">Username:</label>
-  <input id="username" type="text" name="username_" value="<%= @student.username %>"><br>
-  <label for="password">Password:</label>
-  <input id="password" type="password" name="password" value="<%= @student.password %>"><br><br>
+  <p><label for="name">Name:</label>
+  <input id="name" type="text" name="name" value="<%= @student.name %>"></p>
+  <p><label for="username">Username:</label>
+  <input id="username" type="text" name="username_" value="<%= @student.username %>"></p>
+  <p><label for="password">Password:</label>
+  <input id="password" type="password" name="password" value="<%= @student.password %>"></p><br>
   <% if @teacher.username == current_user.username %>
-    <label for="teacher">Teacher:</label><br>
+    <p><label for="teacher">Teacher:</label></p>
     <% Teacher.all.each do |teacher| %>
       <% if @student.teacher == teacher %>
       <input type="radio" id="teacher" name="teacher_id" value="<%=teacher.id%>" checked> <%="#{teacher.name}" %><br>
