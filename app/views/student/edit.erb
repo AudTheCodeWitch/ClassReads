@@ -7,7 +7,7 @@
   <label for="username">Username:</label>
   <input id="username" type="text" name="username_" value="<%= @student.username %>"><br>
   <label for="password">Password:</label>
-  <input id="password" type="password" name="password" value="<%= @student.password %>"><br>
+  <input id="password" type="password" name="password" value="<%= @student.password %>"><br><br>
   <% if @teacher.username == current_user.username %>
     <label for="teacher">Teacher:</label><br>
     <% Teacher.all.each do |teacher| %>
@@ -20,12 +20,12 @@
 
 
   <% end %>
-
-  <input type="submit" />
-</form>
+  <br>
+  <button type="submit">Submit</button>
+</form><br>
 <% if @teacher.username == current_user.username %>
   <form action="/students/<%= @student.username %>" method="post">
     <input type="hidden" name="_method" value="delete" />
-    <input type="submit" value="Delete Student">
+    <button type="submit">Delete Student</button>
   </form>
 <% end %>
