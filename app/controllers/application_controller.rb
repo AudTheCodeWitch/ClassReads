@@ -103,10 +103,10 @@ class ApplicationController < Sinatra::Base
       end
     end
 
-    def assign_teacher(current_user)
-      if teacher_user?(current_user)
+    def assign_teacher
+      if session[:role] == 'teacher'
         @teacher = current_user
-      else
+      elsif session[:role] == 'student'
         @student = current_user
         @teacher = @student.teacher
       end
