@@ -8,7 +8,7 @@
 <p><%= @student.name %> has written <%= @student.published_reviews.length %> review(s)!<br></p>
 <h2>Reviews:</h2>
 <% @student.published_reviews.each do |r| %>
-    <h3><a href="/books/<%=r.book.slug %>"><%= r.book.title %></a><br></h3>
+    <h3><a href="/books/<%= r.book.id %>/<%=r.book.slug %>"><%= r.book.title %></a><br></h3>
     <h4><%= r.rating %> Stars<br></h4>
     <p><%= r.review %></p><hr>
 <% end %>
