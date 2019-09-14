@@ -12,9 +12,9 @@
       <p><%= r.review %></p>
       <% if current_user.username == r.student.username || session[:role] == 'teacher' %>
         <ul class="edit">
-          <li><a href="/books/<%= @book.slug %>/reviews/<%=r.id %>/edit"><button type="button">Edit Review</button></a></li>
-          <li><form action="/books/<%= @book.slug %>/reviews/<%= r.id %>" method="post">
-            <input type="hidden" name="_method" value="delete" />
+          <li><a href="/books/<%= @book.id %>/<%= @book.slug %>/reviews/<%=r.id %>/edit"><button type="button">Edit Review</button></a></li>
+          <li><form action="/books/<%= @book.id %>/<%= @book.slug %>/reviews/<%= r.id %>" method="post">
+            <input type="hidden" name="_method" value="delete">
             <button type="submit">Delete Review</button>
           </form></li>
         </ul><br><br>
@@ -25,13 +25,13 @@
 <% end %>
 <ul class="edit-book">
 <% if session[:role] == 'student' %>
-<li><a href="/books/<%= @book.slug %>/reviews/new"><button type="button">Leave a Review</button></a></li>
+<li><a href="/books/<%= @book.id %>/<%= @book.slug %>/reviews/new"><button type="button">Leave a Review</button></a></li>
 <% end %>
 
 <% if @book.teacher.username == current_user.username %>
-  <li><a href="/books/<% @book.slug %>>/edit"><button type="button">Edit Book</button></a></li>
+  <li><a href="/books/<%= @book.id %>/<%= @book.slug %>/edit"><button type="button">Edit Book</button></a></li>
 
-  <form action="/books/<%= @book.slug %>" method="post">
+  <form action="/books/<%= @book.id %>/<%= @book.slug %>" method="post">
     <input type="hidden" name="_method" value="delete" />
     <li><button type="submit">Delete Book</button></li>
   </form>
