@@ -53,12 +53,14 @@ class ApplicationController < Sinatra::Base
       redirect '/register'
 
     elsif params[:role] == 'teacher'
+      redirect "/login" if Teacher.find_by(username: params[:username])
       @teacher = Teacher.create(name: params[:name], username: params[:username], password: params[:password])
       session[:user_id] = @teacher.id
       session[:role] = params[:role]
       redirect "/teachers/#{params[:username]}"
 
     elsif params[:role] == 'student'
+      redirect "/login" if Student.find_by(username: params[:username])
       @student = Student.create(name: params[:name], username: params[:username], password: params[:password])
       @student.teacher = Teacher.find_by_name(params[:my_teacher])
       @student.save
