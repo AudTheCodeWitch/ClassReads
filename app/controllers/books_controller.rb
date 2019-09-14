@@ -1,13 +1,14 @@
 class BooksController < ApplicationController
   get '/books' do
     if logged_in?
-      assign_teacher(current_user)
+      assign_teacher
       @books = @teacher.books.all.sort_by { |b| b.author}
       erb :'book/index'
     else
       redirect '/login'
     end
     erb :'book/index'
+
   end
 
   get '/books/new' do
