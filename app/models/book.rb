@@ -17,7 +17,7 @@ class Book < ActiveRecord::Base
       average = "No ratings yet"
     else
       self.reviews.each { |r| avg_rating << r.rating }
-      average = avg_rating.sum / avg_rating.length
+      average = avg_rating.sum.to_f / avg_rating.length
     end
     average
   end
