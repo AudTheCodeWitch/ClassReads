@@ -72,7 +72,7 @@ class BooksController < ApplicationController
     @book = Book.find_by_id(params[:id])
     @review = Review.create(rating: params[:review][:rating], review: params[:review][:review])
     @review.student = Student.find_by(username: current_user.username)
-    @review.book = Book.find_by_slug(params[:slug])
+    @review.book = Book.find_by_id(params[:id])
     @review.save
     redirect "/books/#{@book.id}/#{@book.slug}"
   end
