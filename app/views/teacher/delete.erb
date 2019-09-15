@@ -1,7 +1,6 @@
-Are you sure you want to do this? This action cannot be undone. Your students will lose all their books and reviews.
-<br>
-<a href="/teachers/<%=@teacher.username %>"><button type="button">No, take me back!</button></a>
+<p>Are you sure you want to do this? This action cannot be undone. Your students will lose all their books and reviews.</p>
+<a href="/teachers/<%=@teacher.username %>"><button type="button">No, take me back!</button></a><br><br>
 <form method="post" action="/teachers/<%= @teacher.username %>">
   <input type="hidden" name="_method" value="delete" />
-  <input type="submit" value="Yes, DELETE my account.">
+  <button type="submit">Yes, DELETE my account.</button>
 </form>
