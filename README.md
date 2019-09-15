@@ -1,12 +1,15 @@
 # ClassReads
 
-Intro 
+Welcome to ClassReads, a classroom library management and review app.Teachers can add books to their classroom library, which students can then review. In its current state, ideal users would be in 3rd grade or higher. 
 
 ## Usage
 
-Instructions
+To use ClassReads, clone this repo to your machine. Then, run:
 
-    $ instruction code
+    $ bundle install
+    $ shotgun
+
+Click the link posted in your terminal to access the site. To stop, enter ctrl-c in your terminal.
 
 ## Contributing
 
