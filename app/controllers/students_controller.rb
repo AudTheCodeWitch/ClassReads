@@ -7,7 +7,7 @@ class StudentsController < ApplicationController
         @student = Student.find_by(username: current_user.username)
         @teacher = @student.teacher
       end
-      @students = @teacher.students.all.sort_by { |s| s.name}
+      @students = @teacher.students.all.sort_by(&:name)
 
       erb :'student/index'
     else
@@ -72,6 +72,7 @@ class StudentsController < ApplicationController
     @student = Student.find_by(username: params[:username])
     @teacher = @student.teacher
     if teacher_user?(@teacher)
+      @student.reviews.each(&:destroy)
       Student.destroy(@student.id)
       redirect '/students'
     else
