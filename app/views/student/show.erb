@@ -4,6 +4,8 @@
   <h1><%= @student.name %></h1>
 <% end %>
 <h3>Teacher: <%= @teacher.name %></h3><br>
+<h3>About <%= @student.name %></h3>
+<p><%= @student.profile %></p><br>
 <!--List Reviews-->
 <p><%= @student.name %> has written <%= @student.published_reviews.length %> review(s)!<br></p>
 <h2>Reviews:</h2>

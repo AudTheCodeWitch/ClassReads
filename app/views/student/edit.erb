@@ -7,6 +7,8 @@
   <p><label for="username">Username:</label>
   <input id="username" type="text" name="username_" value="<%= @student.username %>"></p>
   <p><label for="password">Password:</label>
+  <p><label for="profile">About Me:</label>
+  <textarea id="profile" name="profile"><%= @student.profile %></textarea>
   <input id="password" type="password" name="password" value="<%= @student.password %>"></p><br>
   <% if @teacher.username == current_user.username %>
     <p><label for="teacher">Teacher:</label></p>

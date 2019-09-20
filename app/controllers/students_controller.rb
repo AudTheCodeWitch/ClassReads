@@ -55,12 +55,12 @@ class StudentsController < ApplicationController
     @student = Student.find_by(username: params[:username])
     @teacher = @student.teacher
     if current_user.username == params[:username]
-      @student.update(name: params[:name], username: params[:username_])
+      @student.update(name: params[:name], username: params[:username_], profile: params[:profile])
       if params[:password] != ''
         @student.update(password: params[:password])
       end
     elsif teacher_user?(@teacher)
-      @student.update(name: params[:name], username: params[:username_], teacher_id: params[:teacher_id])
+      @student.update(name: params[:name], username: params[:username_], profile: params[:profile], teacher_id: params[:teacher_id])
       if params[:password] != ''
         @student.update(password: params[:password])
       end
