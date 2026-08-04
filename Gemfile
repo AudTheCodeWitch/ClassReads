@@ -12,9 +12,9 @@ gem 'tux'
 gem 'faker'
 gem 'rack', '~> 2.2.0'
 gem 'rackup'
+gem 'puma'
 
 group :development do
-  gem 'puma'
   gem 'rerun'
 end
 
