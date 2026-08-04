@@ -24,7 +24,8 @@ GEM
       logger (>= 1.4.2)
       minitest (>= 5.1)
       securerandom (>= 0.3)
-      tzinfo (~> 2.0)
+      tzinfo (~> 2.0, >= 2.0.5)
+      uri (>= 0.13.1)
     addressable (2.9.0)
       public_suffix (>= 2.0.2, < 8.0)
     base64 (0.3.0)
@@ -62,7 +63,6 @@ GEM
       prism (~> 1.5)
     mustermann (3.0.4)
       ruby2_keywords (~> 0.0.1)
-    mutex_m (0.3.0)
     nokogiri (1.19.4)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
@@ -162,4 +162,4 @@ DEPENDENCIES
   tux
 
 BUNDLED WITH
-   2.0.2
+  4.0.17
