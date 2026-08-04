@@ -6,7 +6,7 @@ class ApplicationController < Sinatra::Base
     set :public_folder, 'public'
     set :views, 'app/views'
     enable :sessions
-    set :session_secret, 'changethissecret'
+    set :session_secret, 'changethissecret_make_sure_this_key_is_at_least_32_bytes_long_123'
   end
 
   get '/' do
