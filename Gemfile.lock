@@ -49,6 +49,7 @@ GEM
     faker (2.2.1)
       i18n (>= 0.8)
     ffi (1.17.4-arm64-darwin)
+    ffi (1.17.4-x86_64-linux-gnu)
     i18n (1.15.2)
       concurrent-ruby (~> 1.0)
     io-console (0.8.2)
@@ -68,6 +69,8 @@ GEM
       ruby2_keywords (~> 0.0.1)
     nio4r (2.7.5)
     nokogiri (1.19.4-arm64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.19.4-x86_64-linux-gnu)
       racc (~> 1.4)
     prism (1.9.0)
     pry (0.16.0)
@@ -129,6 +132,7 @@ GEM
       activerecord (>= 3.2)
       sinatra (>= 1.0)
     sqlite3 (2.9.5-arm64-darwin)
+    sqlite3 (2.9.5-x86_64-linux-gnu)
     tilt (2.6.1)
     timeout (0.6.1)
     tux (0.3.0)
@@ -145,6 +149,7 @@ GEM
 
 PLATFORMS
   arm64-darwin-25
+  x86_64-linux
 
 DEPENDENCIES
   activerecord (~> 8.1)
